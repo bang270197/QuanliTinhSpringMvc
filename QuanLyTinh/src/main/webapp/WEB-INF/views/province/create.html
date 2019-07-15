@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<fieldset>
+    <legend>Create Province</legend>
+    <p>
+        <a th:href="@{/show-province}">Back list</a>
+    </p>
+    <th:block th:if="${message}">
+        <p th:text="${message}" style="color: crimson"></p>
+    </th:block>
+    <form th:action="@{/create-province}" th:object="${province}" method="post">
+        <table style="border-collapse: collapse" border="1px">
+            <tr>
+                <td>Name</td>
+                <td><input type="text" th:field="*{name}"></td>
+            </tr>
+            <tr>
+                <td colspan="2"><input type="submit" value="save"></td>
+            </tr>
+        </table>
+    </form>
+</fieldset>
+
+</body>
+</html>

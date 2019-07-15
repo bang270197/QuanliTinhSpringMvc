@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<fieldset>
+    <legend>List View</legend>
+    <p>
+        <a th:href="@{/show-province}">back list</a>
+    </p>
+    <h4>Province<span th:text="${provinces.name}"></span></h4>
+    <table style="border-collapse: collapse" border="1px">
+        <tr>
+            <td>firstName</td>
+            <td>lastName</td>
+        </tr>
+        <tr th:each="p,iterStat:${customer}" th:class="${iterStat.odd}?'odd'">
+            <td th:text="${p.firstName}"></td>
+            <td th:text="${p.lastName}"></td>
+        </tr>
+    </table>
+</fieldset>
+
+</body>
+</html>

@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<p><a href="/showform-customer">Back to list</a></p>
+<th:block th:if="${message}">
+    <p th:text="${message}" style="color: crimson"></p>
+</th:block>
+<th:block th:if="${message1}">
+    <p th:text="${message1}" style="color: crimson"></p>
+</th:block>
+<fieldset>
+    <legend>Edit Customer</legend>
+    <form th:action="@{/edit-customer}" th:object="${customer}" method="post">
+        <input th:type="hidden" name="id" th:field="*{id}">
+        <table>
+            <tr>
+                <td>firstName</td>
+                <td><input type="text" th:field="*{firstName}"></td>
+            </tr>
+            <tr>
+                <td>lastName</td>
+                <td><input type="text" th:field="*{lastName}"></td>
+            </tr>
+            <tr>
+                <td>Province</td>
+                <td>
+                    <select name="province">
+                        <option th:each="p:${provinces}"
+                        th:value="${p.id}"
+                                th:text="${p.name}"
+                                th:selected="(${p.id}==*{province.id})"
+                        >
+
+                        </option>
+                    </select>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="2"><input type="submit" value="Edit"></td>
+            </tr>
+        </table>
+    </form>
+</fieldset>
+</body>
+</html>

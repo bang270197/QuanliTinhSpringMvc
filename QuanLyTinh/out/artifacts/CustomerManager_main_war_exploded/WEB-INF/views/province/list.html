@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<p>
+    <a th:href="@{/show-createProvince}">Create new Province</a>
+</p>
+<p>
+    <a th:href="@{/showform-customer}">show list Customer</a>
+</p>
+
+<fieldset>
+    <legend>List Province</legend>
+    <table style="border-collapse: collapse;" border="1px">
+        <tr>
+            <td>Name</td>
+            <td>view</td>
+            <td>Edit</td>
+            <td>Delete</td>
+
+        </tr>
+        <tr th:each="province,iterStat:${provinces}" th:class="${iterStat.odd}?'odd'">
+            <td th:text="${province.name}"></td>
+            <td ><a th:href="@{/view-province/__${province.id}__}">view</a></td>
+            <td><a th:href="@{/edit-showProvince/__${province.id}__}">edit</a></td>
+            <td><a th:href="@{/delete-showProvince/__${province.id}__}">delete</a></td>
+        </tr>
+    </table>
+</fieldset>
+
+</body>
+</html>
